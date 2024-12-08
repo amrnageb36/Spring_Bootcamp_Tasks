@@ -1,4 +1,4 @@
-package VehicleSystem.dao;
+package VehicleSystem.DAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,14 +24,14 @@ public class VehicleDto {
     }
 
     public void insertVehicle() throws SQLException, ClassNotFoundException {
-       System.out.print("Enter vehicle ID: ");
-       int vehicleId = scanner.nextInt();
-       System.out.print("Enter vehicle brand: ");
-       String brand = scanner.next();
-       System.out.print("Enter vehicle model: ");
-       String model = scanner.next();
-       databaseOperations.insertVehicle(vehicleId, brand, model);
-       System.out.println("the vehicle added successfully");
+        System.out.print("Enter vehicle ID: ");
+        int vehicleId = scanner.nextInt();
+        System.out.print("Enter vehicle brand: ");
+        String brand = scanner.next();
+        System.out.print("Enter vehicle model: ");
+        String model = scanner.next();
+        databaseOperations.insertVehicle(vehicleId, brand, model);
+        System.out.println("the vehicle added successfully");
     }
 
     public void deleteVehicle() throws SQLException, ClassNotFoundException {

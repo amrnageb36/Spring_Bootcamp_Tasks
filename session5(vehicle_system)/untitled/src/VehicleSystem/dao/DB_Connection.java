@@ -13,17 +13,13 @@ import java.sql.Statement;
 @Scope("singleton")
 public class DB_Connection {
 
-    @Value("${database.url}")
-    private String url;
+    private String url="jdbc:mysql://localhost:3306/vehicles?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
-    @Value("${database.user}")
-    String user;
+    String user = "root";
 
-    @Value("${database.password}")
-    String password;
+    String password = "01143614968aA*";
 
-    @Value("${database.DRIVER_CLASS}")
-    String driver;
+    String driver="com.mysql.cj.jdbc.Driver";
 
     public static DB_Connection DB_connection =null;
     public static Statement statement=null;
