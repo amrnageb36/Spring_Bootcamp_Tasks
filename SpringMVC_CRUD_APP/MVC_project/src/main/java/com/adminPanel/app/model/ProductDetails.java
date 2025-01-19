@@ -1,9 +1,11 @@
 package com.adminPanel.app.model;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
@@ -15,19 +17,29 @@ public class ProductDetails {
     @Column(name="id")
     private int id;
 
+    @NotBlank(message = "Name is mandatory")
+    @Size(max = 100, message = "Name cannot exceed 100 characters")
     @Column(name="name")
     private String name;
 
+    @NotNull(message = "Expiration date is required")
+    @FutureOrPresent(message = "Expiration date must be today or in the future")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="expiration_date")
     private Date expirationDate;
 
+    @NotBlank(message = "Manufacturer is mandatory")
+    @Size(max = 100, message = "Manufacturer name cannot exceed 100 characters")
     @Column(name="manufacturer")
     private String manufacturer;
 
+    @NotNull(message = "Price must not be null")
+    @Positive(message = "Price must be greater than zero")
     @Column(name="price")
     private double price;
 
+    @NotNull(message = "Availability must not be null")
     @Column(name="available")
     private Boolean available;
 

@@ -5,6 +5,9 @@ package com.adminPanel.app.model;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="product")
@@ -13,11 +16,14 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private int productId;
 
+    @NotBlank(message = "Name is mandatory")
+    @Size(max = 100, message = "Name cannot exceed 100 characters")
     @Column(name="name")
     private String name;
 
+    @NotNull(message = "Product details must not be null")
     @OneToOne
     @JoinColumn(name="product_details_id")
     private ProductDetails productDetails;
@@ -31,11 +37,11 @@ public class Product {
     }
 
     public int getId() {
-        return id;
+        return productId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.productId = id;
     }
 
     public String getName() {

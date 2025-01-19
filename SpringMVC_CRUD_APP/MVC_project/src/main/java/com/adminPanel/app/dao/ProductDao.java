@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface ProductDao {
 
-    Product insert(ProductDetails product);
+    ProductDetails insert(ProductDetails product);
     Product findById(int id);
-    Product deleteById(int id);
-    Product update(Product product);
+    void deleteById(int id);
+    void update(ProductDetails product);
     List<Product> getAllProducts();
 
 }
